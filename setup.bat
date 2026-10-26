@@ -9,11 +9,11 @@ echo =====================================================================
 echo.
 echo [1/4] Checking Python installation...
 
-:: Check if Python is available
+rem Check if Python is available
 where python >nul 2>nul
 if %errorlevel% neq 0 (
     where py >nul 2>nul
-    if %errorlevel% neq 0 (
+    if !errorlevel! neq 0 (
         color 0C
         echo.
         echo [ERROR] Python was not found in your system PATH!
@@ -40,7 +40,7 @@ cd /d "%~dp0"
 if not exist ".venv\Scripts\python.exe" (
     echo   * Creating fresh virtual environment...
     %PY_CMD% -m venv .venv
-    if %errorlevel% neq 0 (
+    if !errorlevel! neq 0 (
         color 0C
         echo [ERROR] Failed to create virtual environment!
         pause
@@ -48,14 +48,14 @@ if not exist ".venv\Scripts\python.exe" (
     )
     echo   * Virtual environment created successfully.
 ) else (
-    echo   * Existing virtual environment detected (.venv).
+    echo   * Existing virtual environment detected: .venv
 )
 echo.
 
 echo [3/4] Installing required dependencies from requirements.txt...
 call ".venv\Scripts\python.exe" -m pip install --upgrade pip --quiet
 call ".venv\Scripts\python.exe" -m pip install -r requirements.txt --quiet
-if %errorlevel% neq 0 (
+if !errorlevel! neq 0 (
     color 0C
     echo [ERROR] Dependency installation encountered an issue.
     pause
@@ -74,9 +74,9 @@ echo                    Setup Completed Successfully!
 echo =====================================================================
 echo.
 echo You can now run the application anytime by double-clicking:
-echo   --> run.bat
+echo   [RUN] run.bat
 echo.
-echo Press any key to start the Web Dashboard right now, or close this window.
+echo Press any key to launch the Web Dashboard now, or close this window.
 echo =====================================================================
 pause
 call "%~dp0run.bat"
