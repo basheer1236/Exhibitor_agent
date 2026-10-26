@@ -1,0 +1,18 @@
+# Core Web Interface & Async Server
+fastapi>=0.110.0
+uvicorn>=0.28.0
+anyio>=4.0.0
+
+# HTTP & HTML Parsing
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Data Models & Validation
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+# Headless Browser Fallback (Playwright)
+playwright>=1.40.0
+
+# Testing & Quality Assurance
+pytest>=8.0.0
